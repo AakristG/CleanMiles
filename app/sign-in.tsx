@@ -31,7 +31,7 @@ const SignIn = () => {
               <Image 
                 source={icons.google}
                 className="w-5 h-5"
-                resizeMode="contain"
+                resizeMode="contain" 
               />
               <Text className="text-lg font-rubik-medium text-black ml-2">
                 Continue with Google
