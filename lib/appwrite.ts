@@ -34,7 +34,7 @@ export async function login(){
     const browserResult = await openAuthSessionAsync(
       response.toString(),
       redirectUri
-    )
+    );
     
     if(browserResult.type != 'success') throw new Error('Failed to login');
 
@@ -68,8 +68,8 @@ export async function logout(){
   }
 }
 
-//user's profile
-export async function getUser() {
+//user's profile 
+export async function getCurrentUser() {
   try{
       const response = await account.get();
 
@@ -80,9 +80,9 @@ export async function getUser() {
             avatar: userAvatar.toString(),
           }
       }
-
+    return null;
   } catch(error) {
-      console.error(error);
+      console.log(error);
       return null;
   }
 
