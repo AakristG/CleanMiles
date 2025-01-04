@@ -20,6 +20,8 @@ module.exports = {
         black: "#020617",
         yellow: "#fcd34d",
         white: "#FFFFFF",
+        yellow: "#ca8a04",
+        zinc: "#f4f4f5",
         rose: "#be123c",
       }
     },
