@@ -29,7 +29,7 @@ const TabsLayout = () => {
           minHeight: 70,
         }
       }}
-    >
+    >  
       <Tabs.Screen 
       name="index"
       options={{
