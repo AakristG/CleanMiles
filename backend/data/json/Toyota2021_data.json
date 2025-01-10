@@ -1,0 +1,16 @@
+[
+    {
+        "Manufacturer": "NA",
+        "Model": "348",
+        "MPG (City/Hwy)": "3/11",
+        "Annual Fuel Cost": "$550",
+        "GHG Rating": "9"
+    },
+    {
+        "Manufacturer": "NA",
+        "Model": "303",
+        "MPG (City/Hwy)": "6/11",
+        "Annual Fuel Cost": "$700",
+        "GHG Rating": "6"
+    }
+]

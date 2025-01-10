@@ -21,16 +21,12 @@ export const FeaturedCard = ({onPress}: Props) => {
 
       <View className="flex flex-col items-start absolute bottom-5 inset-x-5">
         <Text className="text-xl font-rubik-extrabold text-white" numberOfLines={1}>2024 Rav4</Text>
-        <Text className="text-base font-rubik text-white"> 
-          Toyota
-        </Text>
+        <Text className="text-base font-rubik text-white">Toyota</Text>
 
         <View className="flex flex-row items-center justify-between w-full">
-          <Text className="text-xl font-rubik-extrabold text-white">
-            $12,500
-          </Text>
+          <Text className="text-xl font-rubik-extrabold text-white">$12,500</Text>
           <Image source={icons.heart} className="size-5"/>
-        </View>
+        </View> 
       </View>
     </TouchableOpacity>
   )
@@ -48,14 +44,10 @@ export const Card = ({ onPress }: Props) => {
 
       <View className="flex flex-col mt-2">
         <Text className="text-base font-rubik-bold text-black" numberOfLines={1}>2015 Rav4</Text>
-        <Text className="text-base font-rubik text-black"> 
-          Toyota
-        </Text>
+        <Text className="text-base font-rubik text-black">Toyota</Text>
 
         <View className="flex flex-row items-center justify-between mt-2">
-          <Text className="text-base font-rubik-bold text-black">
-            $12,500
-          </Text>
+          <Text className="text-base font-rubik-bold text-black">$12,500</Text>
           <Image source={icons.heart} className="w-5 h-5 mr-2" tintColor="#191d31"/>
         </View>
       </View>

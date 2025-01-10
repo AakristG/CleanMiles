@@ -8,7 +8,7 @@ export const cards = [
     price: "$100",
     rating: 4.8,
     category: "house",
-    image: images.newYork,
+    image: images.ToyotaSuvTwo,
   },
   {
     title: "Card 2",
@@ -24,7 +24,7 @@ export const cards = [
     price: "$300",
     rating: 2,
     category: "flat",
-    image: images.newYork,
+    image: images.ToyotaSuvTwo,
   },
   {
     title: "Card 4",
@@ -42,7 +42,7 @@ export const featuredCards = [
     location: "Location 1",
     price: "$100",
     rating: 4.8,
-    image: images.newYork,
+    image: images.ToyotaSuvTwo,
     category: "house",
   },
   {
@@ -57,14 +57,9 @@ export const featuredCards = [
 
 export const categories = [
   { title: "All", category: "All" },
-  { title: "Houses", category: "House" },
-  { title: "Condos", category: "Condos" },
-  { title: "Duplexes", category: "Duplexes" },
-  { title: "Studios", category: "Studios" },
-  { title: "Villas", category: "Villa" },
-  { title: "Apartments", category: "Apartments" },
-  { title: "Townhomes", category: "Townhomes" },
-  { title: "Others", category: "Others" },
+  { title: "Electric", category: "House" },
+  { title: "Hybrid", category: "Condos" },
+  { title: "Regular", category: "Duplexes" },
 ];
 
 export const settings = [
@@ -140,7 +135,7 @@ export const facilities = [
 export const gallery = [
   {
     id: 1,
-    image: images.newYork,
+    image: images.ToyotaSuvTwo,
   },
   {
     id: 2,
@@ -148,7 +143,7 @@ export const gallery = [
   },
   {
     id: 3,
-    image: images.newYork,
+    image: images.ToyotaSuvTwo,
   },
   {
     id: 4,
@@ -156,7 +151,7 @@ export const gallery = [
   },
   {
     id: 5,
-    image: images.newYork,
+    image: images.ToyotaSuvTwo,
   },
   {
     id: 6,
