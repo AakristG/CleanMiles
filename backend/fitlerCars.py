@@ -59,11 +59,11 @@ def write_averages_files(manufacturer_dir, year_values):
 
 def organize_data():
     data_files = [
-        '2021data.csv',
-        '2022data.csv',
-        '2023data.csv',
-        '2024data.csv',
-        '2025data.csv',
+        'backend/data/csv/Toyota2021.csv',
+        'backend/data/csv/Toyota2022.csv',
+        'backend/data/csv/Toyota2023.csv',
+        'backend/data/csv/Toyota2024.csv',
+        'backend/data/csv/Toyota2025.csv',
     ]
 
     mpg_values_per_manufacturer = {}
