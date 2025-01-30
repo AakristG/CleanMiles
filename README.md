@@ -4,6 +4,7 @@
 
    ```bash
    npm install
+   npx install-expo-modules@latest
    ```
 
 2. Start the app

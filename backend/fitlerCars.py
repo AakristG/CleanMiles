@@ -3,7 +3,7 @@ import csv
 import re  # Import regex for sanitizing file names
 import numpy as np
 
-
+#Remove all invalid characters from a file and then trim the whitespace with strip
 def sanitize_name(name):
     """Sanitize directory and file names to remove invalid characters."""
     return re.sub(r'[<>:"/\\|?*]', '', name).strip()  # Remove invalid characters and trim spaces
@@ -117,9 +117,12 @@ def organize_data():
                 mpg_values_per_manufacturer[manufacturer][year]['city'].append(float(city_mpg))
                 mpg_values_per_manufacturer[manufacturer][year]['highway'].append(float(highway_mpg))
                 mpg_values_per_manufacturer[manufacturer][year]['combination'].append(float(combination_mpg))
-                if extra_152: mpg_values_per_manufacturer[manufacturer][year]['extra_152'].append(float(extra_152))
-                if extra_153: mpg_values_per_manufacturer[manufacturer][year]['extra_153'].append(float(extra_153))
-                if extra_154: mpg_values_per_manufacturer[manufacturer][year]['extra_154'].append(float(extra_154))
+                if extra_152:
+                    mpg_values_per_manufacturer[manufacturer][year]['extra_152'].append(float(extra_152))
+                if extra_153:
+                    mpg_values_per_manufacturer[manufacturer][year]['extra_153'].append(float(extra_153))
+                if extra_154:
+                    mpg_values_per_manufacturer[manufacturer][year]['extra_154'].append(float(extra_154))
 
     # Write directory.txt files at each level after processing
     write_directory_files('manufacturers')
