@@ -1,18 +1,18 @@
 import pandas as pd
 
 def remove_blank_rows(input_file, output_file):
-    # Read the CSV file
     df = pd.read_csv(input_file)
 
-    # Drop rows that are entirely blank
+    # Drop blank rows
     df_cleaned = df.dropna(how='all')
     
+    #Get rid of blank space in the front
     df = df.map(lambda x: x.lstrip() if isinstance(x, str) else x)
 
-    # Save the cleaned CSV file
     df_cleaned.to_csv(output_file, index=False)
 
-# Usage
-input_file = 'backend/data/csv/Toyota2025.csv'  # Path to the CSV file
-output_file = 'backend/data/csv/cleaned_file.csv'  # Path to save the cleaned CSV file
+# Path to the CSV file
+input_file = 'backend/data/csv/Toyota2025.csv' 
+# Path to save the cleaned CSV file
+output_file = 'backend/data/csv/cleaned_file.csv'
 remove_blank_rows(input_file, output_file)

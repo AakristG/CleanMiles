@@ -4,7 +4,7 @@ import images from '@/constants/images';
 import icons from '@/constants/icons';
 
 interface Props {
-  onPress: () => void;
+  onPress?: () => void;
 }
 
 //Use A.I. here to add featured car first
