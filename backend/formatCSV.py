@@ -13,6 +13,6 @@ def remove_blank_rows(input_file, output_file):
     df_cleaned.to_csv(output_file, index=False)
 
 # Usage
-input_file = 'backend/data/csv/Toyota2021.csv'  # Path to the original messy CSV file
+input_file = 'backend/data/csv/Toyota2025.csv'  # Path to the CSV file
 output_file = 'backend/data/csv/cleaned_file.csv'  # Path to save the cleaned CSV file
 remove_blank_rows(input_file, output_file)
