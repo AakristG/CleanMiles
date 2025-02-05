@@ -1,4 +1,29 @@
-## How to run the app
+# Clean Miles: Ecofriendly IOS application
+
+## Easy Links
+- [Overview](#project-overview)
+- [Features](#features)
+- [Frameworks](#frameworks)
+- [How to run the app](#run-the-app)
+
+## Project Overview
+
+CleanMiles is a mobile app that allows users to better educate themselves about their use of non-renewable resources such as fossil fuels, collectively 
+we can protect the future of our planet and resources. With CleanMiles we hope to have a lasting impact on how users make decisions about their vehicles 
+by referring them to use eco-friendly cars.
+
+## Features
+- **Logging In**: Creating an account to save progress
+- **Responsive Design**: Get to interact with buttons and sliders to learn more about the app
+- **Search and Filter**: Type in a car manufacturer of your choice and get the top 10 most eco-friendly car 
+
+## Frameworks
+
+- **Front End**: React Native, HTML, CSS, TypeScript
+- **Back End**: Node.js, TypeScript, AppWrite
+- **Database**: MongoDB (NoSQL)     
+
+## Run the app
 
 1. Install dependencies
 

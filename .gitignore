@@ -38,4 +38,6 @@ yarn-error.*
 #Python environment
 .venv/
 
+myenv/
+
 app-example
