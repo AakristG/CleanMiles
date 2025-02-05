@@ -1,6 +1,7 @@
 import os
 import csv
 import numpy as np
+import re
 
 # Directory where the structured data will be stored
 base_dir = "backend/manufacturer"
@@ -44,6 +45,9 @@ for csv_file in csv_files:
                 with open(details_file, "w", encoding="utf-8") as details:
                     details.write(line + "\n")
                 model = None 
+
+def sanitize_name(name):
+    return re.sub(r'[<>:"/\\|?*]', '', name).strip()  
 
 def generate_info_files(root_dir):
     """Generate extraInfo.txt files for all levels after processing."""
@@ -91,6 +95,81 @@ def save_average_data(brand_dir, yearly_data):
     # Write extraInfo.txt in averages folder
     with open(os.path.join(avg_dir, 'extraInfo.txt'), 'w') as info_file:
         info_file.write('\n'.join(yearly_files))
+
+def process_vehicle_data():
+    """Process vehicle data from multiple CSV files and organize it into a structured directory format."""
+    data_sources = [
+        'backend/data/nodes/2021.csv',
+        'backend/data/nodes/2022.csv',
+        'backend/data/nodes/2023.csv',
+        'backend/data/nodes/2024.csv',
+        'backend/data/nodes/2025.csv',
+    ]
+
+    mpg_data_by_manufacturer = {}
+
+    for source in data_sources:
+        if not os.path.exists(source):
+            print(f"Missing file: {source}")
+            continue
+
+        with open(source, 'r') as csv_file:
+            reader = csv.DictReader(csv_file)
+
+            for entry in reader:
+                brand = sanitize_name(entry['Mfr Name'].strip())
+                model_name = sanitize_name(entry['Carline'].strip())
+                production_year = entry['Model Year'].strip()
+                city_efficiency = entry['City FE (Guide) - Conventional Fuel'].strip()
+                highway_efficiency = entry['Hwy FE (Guide) - Conventional Fuel'].strip()
+                combined_efficiency = entry['Comb FE (Guide) - Conventional Fuel'].strip()
+                additional_152 = entry.get(reader.fieldnames[152], '').strip()
+                additional_153 = entry.get(reader.fieldnames[153], '').strip()
+                additional_154 = entry.get(reader.fieldnames[154], '').strip()
+
+                # Skip rows with missing critical data
+                if not (brand and model_name and production_year and city_efficiency and highway_efficiency and combined_efficiency):
+                    print(f"Incomplete entry skipped: {entry}")
+                    continue
+
+                # Define directory structure
+                brand_path = os.path.join('vehicles', brand)
+                model_path = os.path.join(brand_path, model_name)
+
+                os.makedirs(model_path, exist_ok=True)
+
+                # Save data to a text file for the respective year
+                year_data_file = os.path.join(model_path, f"{production_year}.txt")
+
+                with open(year_data_file, 'w') as output_file:
+                    output_file.write(f"{city_efficiency},{highway_efficiency},{combined_efficiency}\n")
+                    output_file.write(f"{additional_152},{additional_153},{additional_154}\n")
+
+                # Track values for computing averages
+                if brand not in mpg_data_by_manufacturer:
+                    mpg_data_by_manufacturer[brand] = {}
+
+                if production_year not in mpg_data_by_manufacturer[brand]:
+                    mpg_data_by_manufacturer[brand][production_year] = {
+                        'city': [], 'highway': [], 'combined': [], 'additional_152': [], 'additional_153': [], 'additional_154': []
+                    }
+
+                mpg_data_by_manufacturer[brand][production_year]['city'].append(float(city_efficiency))
+                mpg_data_by_manufacturer[brand][production_year]['highway'].append(float(highway_efficiency))
+                mpg_data_by_manufacturer[brand][production_year]['combined'].append(float(combined_efficiency))
+                if additional_152:
+                    mpg_data_by_manufacturer[brand][production_year]['additional_152'].append(float(additional_152))
+                if additional_153:
+                    mpg_data_by_manufacturer[brand][production_year]['additional_153'].append(float(additional_153))
+                if additional_154:
+                    mpg_data_by_manufacturer[brand][production_year]['additional_154'].append(float(additional_154))
+
+    # Generate extraInfo.txt files for organization
+    generate_info_files('vehicles')
+
+    # Save computed average values for each manufacturer and year
+    for brand, yearly_data in mpg_data_by_manufacturer.items():
+        save_average_data(os.path.join('vehicles', brand), yearly_data)
 
 
 print("Folders and files created")
